@@ -1,7 +1,7 @@
 import MiniDrawer from 'components/leftnav';
-import Sidebar from 'components/Sidebar/Sidebar';
+import Sidebar from 'components/Sidebar';
 import React from 'react';
 
-const LeftNav = () => <MiniDrawer />;
+const LeftNav = () => <Sidebar />;
 
 export default LeftNav;

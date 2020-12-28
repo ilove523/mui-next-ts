@@ -1,11 +1,5 @@
-import {
-  Drawer,
-  IconButton,
-  List,
-  createStyles,
-  withStyles,
-} from '@material-ui/core';
-import { Theme } from '@material-ui/core/styles';
+import { Drawer, IconButton, List } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import {
   ArrowBack as ArrowBackIcon,
   HelpOutline as FAQIcon,
@@ -17,11 +11,21 @@ import {
   FormatSize as TypographyIcon,
   FilterNone as UIElementsIcon,
 } from '@material-ui/icons';
-import classNames from 'classnames';
-import React from 'react';
+import clsx from 'clsx';
+// context
+import {
+  toggleSidebar,
+  useLayoutDispatch,
+  useLayoutState,
+} from 'context/LayoutContext';
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Dot from './Dot';
+// components
 import SidebarLink from './SidebarLink';
+// styles
+import useStyles from './styles';
 
 const SidebarArray = [
   { id: 0, label: 'Dashboard', link: '/app/dashboard', icon: <HomeIcon /> },
@@ -60,7 +64,7 @@ const SidebarArray = [
     id: 12,
     label: 'My recent',
     link: '',
-    icon: <Dot size="small" color="secondary" />,
+    icon: <Dot size="small" color="warning" />,
   },
   {
     id: 13,
@@ -76,45 +80,69 @@ const SidebarArray = [
   },
 ];
 
-const SidebarView = ({
-  classes,
-  theme,
-  toggleSidebar,
-  isSidebarOpened,
-  isPermanent,
-  location,
-}) => {
+const Sidebar = () => {
+  const classes = useStyles();
+  const theme = useTheme();
+
+  // global
+  const isSidebarOpened = useLayoutState();
+  const isLayoutDispatch = useLayoutDispatch();
+
+  // local
+  const [isPermanent, setPermanent] = useState(true);
+
+  const handleWindowWidthChange = () => {
+    const windowWidth = window.innerWidth;
+    const breakpointWidth = theme.breakpoints.values.md;
+    const isSmallScreen = windowWidth < breakpointWidth;
+
+    if (isSmallScreen && isPermanent) {
+      setPermanent(false);
+    } else if (!isSmallScreen && !isPermanent) {
+      setPermanent(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowWidthChange);
+    handleWindowWidthChange();
+    return function cleanup() {
+      window.removeEventListener('resize', handleWindowWidthChange);
+    };
+  });
+
   return (
     <Drawer
       variant={isPermanent ? 'permanent' : 'temporary'}
-      className={classNames(classes.drawer, {
+      className={clsx(classes.drawer, {
         [classes.drawerOpen]: isSidebarOpened,
         [classes.drawerClose]: !isSidebarOpened,
       })}
       classes={{
-        paper: classNames(classes.drawer, {
+        paper: clsx({
           [classes.drawerOpen]: isSidebarOpened,
           [classes.drawerClose]: !isSidebarOpened,
         }),
       }}
       open={isSidebarOpened}
     >
+      <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
-        <IconButton onClick={toggleSidebar}>
+        <IconButton onClick={() => toggleSidebar(isLayoutDispatch)}>
           <ArrowBackIcon
             classes={{
-              root: classNames(classes.headerIcon, classes.headerIconCollapse),
+              root: clsx(classes.headerIcon, classes.headerIconCollapse),
             }}
           />
         </IconButton>
       </div>
       <List className={classes.sidebarList}>
-        {SidebarArray.map(link => (
+        {SidebarArray.map(item => (
           <SidebarLink
-            key={link.id}
-            location={location}
+            key={item.id}
+            location={{ pathname: item.link }}
             isSidebarOpened={isSidebarOpened}
-            {...link}
+            {...item}
           />
         ))}
       </List>
@@ -122,64 +150,4 @@ const SidebarView = ({
   );
 };
 
-const drawerWidth = 240;
-
-const styles = (theme: Theme) =>
-  createStyles({
-    menuButton: {
-      marginLeft: 12,
-      marginRight: 36,
-    },
-    hide: {
-      display: 'none',
-    },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-      whiteSpace: 'nowrap',
-      top: theme.spacing.length * 8,
-      [theme.breakpoints.down('sm')]: {
-        top: 0,
-      },
-    },
-    drawerOpen: {
-      width: drawerWidth,
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    drawerClose: {
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      overflowX: 'hidden',
-      width: theme.spacing.length * 7 + 40,
-      [theme.breakpoints.down('sm')]: {
-        width: drawerWidth,
-      },
-    },
-    toolbar: {
-      ...theme.mixins.toolbar,
-      [theme.breakpoints.down('sm')]: {
-        display: 'none',
-      },
-    },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing.length * 3,
-    },
-    mobileBackButton: {
-      marginTop: theme.spacing.length * 0.5,
-      marginLeft: theme.spacing.length * 3,
-      [theme.breakpoints.only('sm')]: {
-        marginTop: theme.spacing.length * 0.625,
-      },
-      [theme.breakpoints.up('md')]: {
-        display: 'none',
-      },
-    },
-  });
-
-export default withStyles(styles, { withTheme: true })(SidebarView);
+export default Sidebar;

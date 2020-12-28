@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Inbox as InboxIcon } from '@material-ui/icons';
-import classnames from 'classnames';
+import clsx from 'clsx';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -53,7 +53,7 @@ const SidebarLink = ({
   if (type === 'title')
     return (
       <Typography
-        className={classnames(classes.linkText, classes.sectionTitle, {
+        className={clsx(classes.linkText, classes.sectionTitle, {
           [classes.linkTextHidden]: !isSidebarOpened,
         })}
       >
@@ -71,7 +71,7 @@ const SidebarLink = ({
         to={link}
         className={classes.link}
         classes={{
-          root: classnames(classes.linkText, {
+          root: clsx(classes.linkText, {
             [classes.linkActive]: isLinkActive && !nested,
             [classes.linkNested]: nested,
           }),
@@ -79,7 +79,7 @@ const SidebarLink = ({
         disableRipple
       >
         <ListItemIcon
-          className={classnames(classes.linkIcon, {
+          className={clsx(classes.linkIcon, {
             [classes.linkIconActive]: isLinkActive,
           })}
         >
@@ -91,7 +91,7 @@ const SidebarLink = ({
         </ListItemIcon>
         <ListItemText
           classes={{
-            primary: classnames(classes.linkText, {
+            primary: clsx(classes.linkText, {
               [classes.linkTextActive]: isLinkActive,
               [classes.linkTextHidden]: !isSidebarOpened,
             }),
@@ -112,7 +112,7 @@ const SidebarLink = ({
         disableRipple
       >
         <ListItemIcon
-          className={classnames(classes.linkIcon, {
+          className={clsx(classes.linkIcon, {
             [classes.linkIconActive]: isLinkActive,
           })}
         >
@@ -120,7 +120,7 @@ const SidebarLink = ({
         </ListItemIcon>
         <ListItemText
           classes={{
-            primary: classnames(classes.linkText, {
+            primary: clsx(classes.linkText, {
               [classes.linkTextActive]: isLinkActive,
               [classes.linkTextHidden]: !isSidebarOpened,
             }),
@@ -136,14 +136,14 @@ const SidebarLink = ({
           className={classes.nestedList}
         >
           <List component="div" disablePadding>
-            {children.map(childrenLink => (
+            {children.map(child => (
               <SidebarLink
-                key={childrenLink && childrenLink.link}
+                key={child && child.link}
                 location={location}
                 isSidebarOpened={isSidebarOpened}
                 classes={classes}
                 nested
-                {...childrenLink}
+                {...child}
               />
             ))}
           </List>
