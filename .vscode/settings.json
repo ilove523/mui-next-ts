@@ -10,9 +10,5 @@
     "http://json.schemastore.org/github-workflow": [
       "**/.github/workflows/*.yml"
     ]
-  },
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "typescript": "typescriptreact"
   }
 }
