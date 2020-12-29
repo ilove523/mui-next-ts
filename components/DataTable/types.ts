@@ -5,14 +5,24 @@ import { PInput } from 'components/Input';
 import { LinkProps } from 'react-csv/components/Link';
 
 import { dataTableStyles, toolbarStyles } from './styles';
+
 // import ReactToPrintProps from "react-to-print";
+
+export type DataType = {
+  index: number;
+  name: string;
+  gender: string;
+  age: number;
+  phone: number;
+  email: string;
+};
 
 export type TableDataHeader<T = { [key: string]: any }> = {
   column: keyof T;
   label: string;
 };
 
-export interface TableColumnOptions extends TableDataHeader {
+export interface TableColumnOptions extends TableDataHeader<DataType> {
   visible: boolean;
 }
 
@@ -21,7 +31,7 @@ export type SortDirectionKeys = 'asc' | 'desc';
 export interface PDataTable
   extends WithStyles<typeof dataTableStyles>,
     Omit<TableProps, 'classes' | 'title' | 'onSelect'> {
-  headers?: Array<TableDataHeader>;
+  headers?: Array<TableDataHeader<DataType>>;
   data?: Array<Object>;
   sort?: boolean;
   hover?: boolean;

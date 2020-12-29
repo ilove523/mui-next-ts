@@ -6,7 +6,7 @@ import {
 import { AuthProvider } from 'hooks/auth-context';
 import { UserProvider } from 'hooks/user-context';
 import { users } from 'libs/db/users';
-import IndexPage from 'pages/index';
+import IndexPage from 'pages/index2';
 import React from 'react';
 import server from 'utils/test-server';
 
