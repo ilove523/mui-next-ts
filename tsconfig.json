@@ -21,6 +21,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/Sidebar/SidebarView.xts"
+    "components/nav/Sidebar/SidebarView.xts"
   ]
 }

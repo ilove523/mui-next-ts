@@ -16,7 +16,7 @@ import Dot from '../Dot';
 // styles
 import useStyles from './styles';
 
-interface ISidebarLink {
+export interface ISidebarLink {
   link?: string;
   icon?: React.ReactElement;
   label?: string;

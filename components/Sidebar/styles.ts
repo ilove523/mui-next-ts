@@ -1,68 +1,98 @@
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import { Theme, createStyles } from '@material-ui/core';
 
-const drawerWidth = 240;
-
-export default makeStyles((theme: Theme) =>
+export const sidebarStyles = (theme: Theme) =>
   createStyles({
-    menuButton: {
-      marginLeft: 12,
-      marginRight: 36,
+    rootBasic: {
+      backgroundColor: '#2c2c2c',
+      position: 'relative',
+      height: '100vh',
+      overflowX: 'hidden',
+      transition: 'width 0.2s',
     },
-    hide: {
-      display: 'none',
+    rootMini: {
+      width: 60,
     },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
+    rootNormal: {
+      width: 260,
+    },
+    brandContainer: {
+      width: '100%',
+      height: 60,
+      borderBottom: '0.2mm solid rgb(205, 205, 205)',
+    },
+    brand: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: 'rgb(235, 235, 235)',
+      textAlign: 'center',
+      textOverflow: 'clip',
       whiteSpace: 'nowrap',
     },
-    drawerOpen: {
-      width: drawerWidth,
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
+    brandMini: {
+      fontSize: 24,
+      color: 'rgb(235, 235, 235)',
     },
-    drawerClose: {
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      overflowX: 'hidden',
-      width: theme.spacing(7) + 40,
-      [theme.breakpoints.down('sm')]: {
-        width: drawerWidth,
-      },
+    menuRoot: {
+      padding: 0,
     },
-    toolbar: {
-      ...theme.mixins.toolbar,
-      [theme.breakpoints.down('sm')]: {
-        display: 'none',
-      },
+    menu: {
+      fontSize: 18,
+      height: 55,
+      width: '90%',
     },
-    headerIcon: {
-      fontSize: 28,
-      color: 'rgba(255, 255, 255, 0.35)',
+    popperMenu: {
+      backgroundColor: '#424242',
+      width: 260,
+      paddingTop: theme.spacing(1),
+      paddingBottom: theme.spacing(1),
     },
-    headerIconCollapse: {
+    menuOpen: {
       color: 'white',
     },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
+    menuClose: {
+      color: 'rgb(185, 185, 185)',
     },
-    sidebarList: {
-      marginTop: theme.spacing(6),
+    menuText: {
+      marginLeft: theme.spacing(2),
     },
-    mobileBackButton: {
-      marginTop: theme.spacing(0.5),
-      marginLeft: 18,
-      [theme.breakpoints.only('sm')]: {
-        marginTop: theme.spacing(0.625),
+    menuItem: {
+      height: 40,
+      width: '90%',
+      borderRadius: 8,
+      color: 'rgb(185, 185, 185)',
+      marginTop: theme.spacing(1),
+      '&:hover': {
+        color: 'white',
+        backgroundColor: '#424242',
       },
-      [theme.breakpoints.up('md')]: {
-        display: 'none',
+    },
+    menuItemText: {
+      fontSize: 16,
+      marginLeft: theme.spacing(2),
+    },
+    menuItemHighlight: {
+      color: 'white',
+      backgroundColor: '#00bcd4',
+      border: '1px solid #00838f',
+      '&:hover': {
+        backgroundColor: '#00bcd4',
       },
     },
-  }),
-);
+    menuItemTextHighlight: {
+      fontWeight: 'bold',
+    },
+    icon: {
+      fontSize: 20,
+    },
+    visibleHidden: {
+      visibility: 'hidden',
+    },
+    flex: {
+      flex: 1,
+    },
+    tooltip: {
+      marginLeft: theme.spacing(0.5),
+      fontSize: 16,
+      backgroundColor: '#424242',
+    },
+  });
