@@ -13,7 +13,8 @@ class ErrorPage extends React.Component<PErrorPage> {
     if (statusCode === 404) {
       msg = 'Page not found.';
     } else {
-      msg = HttpStatus[statusCode] || 'An unexpected error has occurred.';
+      msg =
+        String(HttpStatus[statusCode]) || 'An unexpected error has occurred.';
     }
     return msg;
   };

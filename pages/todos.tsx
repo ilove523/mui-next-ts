@@ -2,7 +2,7 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import withAuthentication, {
   AuthenticationProps,
 } from 'components/hoc/with-authentication';
-import Layout from 'components/layout';
+import { Layout } from 'components/Layout';
 import Todo from 'components/todo';
 import { NextPage } from 'next';
 import React from 'react';
@@ -20,7 +20,7 @@ const TodosPage: NextPage<AuthenticationProps> = () => {
   const classes = useStyles();
 
   return (
-    <Layout title="Todo App">
+    <Layout>
       <Todo className={classes.root} />
     </Layout>
   );

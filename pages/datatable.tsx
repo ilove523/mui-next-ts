@@ -7,6 +7,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { DataTable, DataType, TableDataHeader } from 'components/DataTable';
+import { Layout } from 'components/Layout';
 import React from 'react';
 
 const data: Array<DataType> = [
@@ -262,18 +263,20 @@ class Content extends React.Component<PContent, SContent> {
   render = () => {
     const { classes } = this.props;
     return (
-      <Grid container direction="column" alignItems="center">
-        <Paper className={classes.root}>
-          <DataTable
-            title="DataTable"
-            data={data}
-            headers={headers}
-            select
-            selectBy="index"
-            onSelect={this.handleSelect}
-          />
-        </Paper>
-      </Grid>
+      <Layout>
+        <Grid container direction="column" alignItems="center">
+          <Paper className={classes.root}>
+            <DataTable
+              title="DataTable"
+              data={data}
+              headers={headers}
+              select
+              selectBy="index"
+              onSelect={this.handleSelect}
+            />
+          </Paper>
+        </Grid>
+      </Layout>
     );
   };
 }

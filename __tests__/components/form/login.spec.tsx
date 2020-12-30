@@ -1,6 +1,6 @@
 import { act, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import LoginForm, { validations } from 'components/forms/login';
+import LoginForm, { validations } from 'components/user/login';
 import React from 'react';
 
 jest.mock('next/link', () => ({ children, href }) =>

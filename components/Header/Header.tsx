@@ -1,6 +1,6 @@
-import { pages } from '_helpers/fakeData';
 import { Grid, Hidden, Typography, withStyles } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
+import { pages } from 'components/Sidebar/SidebarData';
 import { Page } from 'components/Sidebar/types';
 import { withRouter } from 'next/router';
 import React from 'react';

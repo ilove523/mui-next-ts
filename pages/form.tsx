@@ -9,6 +9,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { Lock, Person } from '@material-ui/icons';
+import { Layout } from 'components';
 import { Button } from 'components/Button';
 import { Checkbox } from 'components/Checkbox';
 import { DatePicker } from 'components/DatePicker';
@@ -112,198 +113,200 @@ class Content extends React.Component<PContent, SContent> {
       selectedDateTime,
     } = this.state;
     return (
-      <Grid container direction="column">
-        <Grid container spacing={2} style={{ marginBottom: 16 }}>
-          <Grid item xs={6}>
-            <Paper className={classes.formContainer}>
-              <Typography variant="h5" className={classes.title}>
-                Normal form
-              </Typography>
-              <Divider className={classes.divider} />
-              <Input
-                fullWidth
-                required
-                color="secondary"
-                name="account"
-                value={account}
-                label="Account"
-                startAdornment={<Person className={classes.adornment} />}
-                onChange={this.handleChange}
-                FormControlProps={{
-                  className: classes.formControl,
-                }}
-              />
-              <Input
-                fullWidth
-                required
-                clearable
-                color="secondary"
-                type="password"
-                name="password"
-                value={password}
-                label="Password"
-                startAdornment={<Lock className={classes.adornment} />}
-                onChange={this.handleChange}
-                FormControlProps={{
-                  className: classes.formControl,
-                }}
-              />
-              <Grid container alignItems="center" justify="space-between">
-                <Checkbox color="secondary" label="Remember me" />
-                <Link href="#">
-                  <a>Forget password?</a>
-                </Link>
-              </Grid>
-              <br />
-              <Button
-                color="primary"
-                variant="contained"
-                className={classes.formControl}
-              >
-                Sign in
-              </Button>
-            </Paper>
+      <Layout>
+        <Grid container direction="column">
+          <Grid container spacing={2} style={{ marginBottom: 16 }}>
+            <Grid item xs={6}>
+              <Paper className={classes.formContainer}>
+                <Typography variant="h5" className={classes.title}>
+                  Normal form
+                </Typography>
+                <Divider className={classes.divider} />
+                <Input
+                  fullWidth
+                  required
+                  color="secondary"
+                  name="account"
+                  value={account}
+                  label="Account"
+                  startAdornment={<Person className={classes.adornment} />}
+                  onChange={this.handleChange}
+                  FormControlProps={{
+                    className: classes.formControl,
+                  }}
+                />
+                <Input
+                  fullWidth
+                  required
+                  clearable
+                  color="secondary"
+                  type="password"
+                  name="password"
+                  value={password}
+                  label="Password"
+                  startAdornment={<Lock className={classes.adornment} />}
+                  onChange={this.handleChange}
+                  FormControlProps={{
+                    className: classes.formControl,
+                  }}
+                />
+                <Grid container alignItems="center" justify="space-between">
+                  <Checkbox color="secondary" label="Remember me" />
+                  <Link href="#">
+                    <a>Forget password?</a>
+                  </Link>
+                </Grid>
+                <br />
+                <Button
+                  color="primary"
+                  variant="contained"
+                  className={classes.formControl}
+                >
+                  Sign in
+                </Button>
+              </Paper>
+            </Grid>
+            <Grid item xs={6}>
+              <Paper className={classes.formContainer}>
+                <Typography variant="h5" className={classes.title}>
+                  Selection form
+                </Typography>
+                <Divider className={classes.divider} />
+                <Select
+                  all
+                  name="gender"
+                  fullWidth
+                  options={[
+                    { value: 'Male', label: 'Male' },
+                    { value: 'Female', label: 'Female' },
+                  ]}
+                  color="secondary"
+                  label="Choose your gender"
+                  value={gender}
+                  onChange={this.handleChange}
+                  FormControlProps={{
+                    className: classes.formControl,
+                  }}
+                />
+                <Select
+                  all
+                  fullWidth
+                  multiple
+                  name="cities"
+                  options={[
+                    { value: 'Taipei', label: 'Taipei' },
+                    { value: 'Taoyuan', label: 'Taoyuan' },
+                    { value: 'Hsinchu', label: 'Hsinchu' },
+                    { value: 'Taichung', label: 'Taichung' },
+                    { value: 'Tainan', label: 'Tainan' },
+                    { value: 'Chiayi', label: 'Chiayi' },
+                    { value: 'Kaoshiung', label: 'Kaoshiung' },
+                  ]}
+                  color="secondary"
+                  label="Choose travel cities"
+                  value={cities}
+                  onChange={this.handleChange}
+                  FormControlProps={{
+                    className: classes.formControl,
+                  }}
+                />
+              </Paper>
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.formContainer}>
-              <Typography variant="h5" className={classes.title}>
-                Selection form
-              </Typography>
-              <Divider className={classes.divider} />
-              <Select
-                all
-                name="gender"
-                fullWidth
-                options={[
-                  { value: 'Male', label: 'Male' },
-                  { value: 'Female', label: 'Female' },
-                ]}
-                color="secondary"
-                label="Choose your gender"
-                value={gender}
-                onChange={this.handleChange}
-                FormControlProps={{
-                  className: classes.formControl,
-                }}
-              />
-              <Select
-                all
-                fullWidth
-                multiple
-                name="cities"
-                options={[
-                  { value: 'Taipei', label: 'Taipei' },
-                  { value: 'Taoyuan', label: 'Taoyuan' },
-                  { value: 'Hsinchu', label: 'Hsinchu' },
-                  { value: 'Taichung', label: 'Taichung' },
-                  { value: 'Tainan', label: 'Tainan' },
-                  { value: 'Chiayi', label: 'Chiayi' },
-                  { value: 'Kaoshiung', label: 'Kaoshiung' },
-                ]}
-                color="secondary"
-                label="Choose travel cities"
-                value={cities}
-                onChange={this.handleChange}
-                FormControlProps={{
-                  className: classes.formControl,
-                }}
-              />
-            </Paper>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Paper className={classes.formContainer}>
+                <Typography variant="h5" className={classes.title}>
+                  Dynamic selection
+                </Typography>
+                <Divider className={classes.divider} />
+                <DynamicSelect
+                  fullWidth
+                  name="dGender"
+                  value={dGender}
+                  data={data}
+                  valueColumn="gender"
+                  color="secondary"
+                  label="Choose gender"
+                  onChange={this.handleChange}
+                  FormControlProps={{
+                    className: classes.formControl,
+                  }}
+                />
+                <DynamicSelect
+                  fullWidth
+                  name="dAge"
+                  value={dAge}
+                  data={data}
+                  valueColumn="age"
+                  color="secondary"
+                  label="Choose age"
+                  filters={{ gender: dGender }}
+                  onChange={this.handleChange}
+                  FormControlProps={{
+                    className: classes.formControl,
+                  }}
+                />
+                <DynamicSelect
+                  fullWidth
+                  all={false}
+                  name="dName"
+                  value={dName}
+                  data={data}
+                  valueColumn="name"
+                  color="secondary"
+                  label="Choose name"
+                  filters={{ gender: dGender, age: dAge }}
+                  onChange={this.handleChange}
+                  FormControlProps={{
+                    className: classes.formControl,
+                  }}
+                />
+              </Paper>
+            </Grid>
+            <Grid item xs={6}>
+              <Paper className={classes.formContainer}>
+                <Typography variant="h5" className={classes.title}>
+                  Date picker
+                </Typography>
+                <Divider className={classes.divider} />
+                <DatePicker
+                  color="secondary"
+                  label="Date Picker"
+                  selected={selectedDate}
+                  FormControlProps={{
+                    fullWidth: true,
+                    className: classes.formControl,
+                  }}
+                  onChange={this.handleDateChange('selectedDate')}
+                />
+                <DatePicker
+                  showTimeSelect
+                  color="secondary"
+                  label="DateTime Picker"
+                  selected={selectedDateTime}
+                  dateFormat="yyyy-MM-dd HH:mm"
+                  FormControlProps={{
+                    fullWidth: true,
+                    className: classes.formControl,
+                  }}
+                  onChange={this.handleDateChange('selectedDateTime')}
+                />
+                <DatePicker
+                  readOnly
+                  selected={selectedDate}
+                  color="secondary"
+                  label="Readonly"
+                  FormControlProps={{
+                    className: classes.formControl,
+                  }}
+                  onChange={this.handleDateChange('selectedDate')}
+                />
+              </Paper>
+            </Grid>
           </Grid>
         </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <Paper className={classes.formContainer}>
-              <Typography variant="h5" className={classes.title}>
-                Dynamic selection
-              </Typography>
-              <Divider className={classes.divider} />
-              <DynamicSelect
-                fullWidth
-                name="dGender"
-                value={dGender}
-                data={data}
-                valueColumn="gender"
-                color="secondary"
-                label="Choose gender"
-                onChange={this.handleChange}
-                FormControlProps={{
-                  className: classes.formControl,
-                }}
-              />
-              <DynamicSelect
-                fullWidth
-                name="dAge"
-                value={dAge}
-                data={data}
-                valueColumn="age"
-                color="secondary"
-                label="Choose age"
-                filters={{ gender: dGender }}
-                onChange={this.handleChange}
-                FormControlProps={{
-                  className: classes.formControl,
-                }}
-              />
-              <DynamicSelect
-                fullWidth
-                all={false}
-                name="dName"
-                value={dName}
-                data={data}
-                valueColumn="name"
-                color="secondary"
-                label="Choose name"
-                filters={{ gender: dGender, age: dAge }}
-                onChange={this.handleChange}
-                FormControlProps={{
-                  className: classes.formControl,
-                }}
-              />
-            </Paper>
-          </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.formContainer}>
-              <Typography variant="h5" className={classes.title}>
-                Date picker
-              </Typography>
-              <Divider className={classes.divider} />
-              <DatePicker
-                color="secondary"
-                label="Date Picker"
-                selected={selectedDate}
-                FormControlProps={{
-                  fullWidth: true,
-                  className: classes.formControl,
-                }}
-                onChange={this.handleDateChange('selectedDate')}
-              />
-              <DatePicker
-                showTimeSelect
-                color="secondary"
-                label="DateTime Picker"
-                selected={selectedDateTime}
-                dateFormat="yyyy-MM-dd HH:mm"
-                FormControlProps={{
-                  fullWidth: true,
-                  className: classes.formControl,
-                }}
-                onChange={this.handleDateChange('selectedDateTime')}
-              />
-              <DatePicker
-                readOnly
-                selected={selectedDate}
-                color="secondary"
-                label="Readonly"
-                FormControlProps={{
-                  className: classes.formControl,
-                }}
-                onChange={this.handleDateChange('selectedDate')}
-              />
-            </Paper>
-          </Grid>
-        </Grid>
-      </Grid>
+      </Layout>
     );
   };
 }

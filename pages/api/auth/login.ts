@@ -9,7 +9,8 @@ import {
 } from 'libs/middleware';
 import { loginSchema } from 'libs/validation';
 import { setCookie } from 'nookies';
-import { NextHttpHandler, UnauthorizedError, User } from 'types';
+import { NextHttpHandler, UnauthorizedError } from 'types';
+import { User } from 'types/user';
 
 /**
  * Login a existing user

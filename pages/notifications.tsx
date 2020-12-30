@@ -14,6 +14,7 @@ import {
 import { RadioGroupProps } from '@material-ui/core/RadioGroup';
 import { SnackbarOrigin, SnackbarProps } from '@material-ui/core/Snackbar';
 import { Button } from 'components/Button';
+import { Layout } from 'components/Layout';
 import { Notification, NotificationVariantKey } from 'components/Notification';
 import React from 'react';
 
@@ -92,114 +93,120 @@ class Content extends React.Component<PContent, SContent> {
     const { classes } = this.props;
     const { open, variant, anchorValue, anchorOrigin, message } = this.state;
     return (
-      <Grid container direction="column" alignItems="center">
-        <Paper className={classes.root}>
-          <Typography variant="h3">Playground</Typography>
-          <Divider className={classes.divider} />
-          <Typography variant="h5">Variant</Typography>
-          <RadioGroup
-            row
-            name="variant"
-            value={variant}
-            onChange={this.handleChangeVariant}
-            className={classes.radioGroup}
-          >
-            <FormControlLabel
-              value="default"
-              label="default"
-              control={<Radio />}
-            />
-            <FormControlLabel value="info" label="info" control={<Radio />} />
-            <FormControlLabel
-              value="success"
-              label="success"
-              control={<Radio />}
-            />
-            <FormControlLabel value="error" label="error" control={<Radio />} />
-            <FormControlLabel
-              value="warning"
-              label="warning"
-              control={<Radio />}
-            />
-          </RadioGroup>
-          <Divider className={classes.divider} />
-          <Typography variant="h5">AnchorOrigin</Typography>
-          <RadioGroup
-            row
-            name="anchorValue"
-            value={anchorValue}
-            onChange={this.handleChangeAnchorOrigin}
-            className={classes.radioGroup}
-          >
-            <FormControlLabel
-              value="top-left"
-              label="top-left"
-              control={<Radio />}
-            />
-            <FormControlLabel
-              value="top-center"
-              label="top-center"
-              control={<Radio />}
-            />
-            <FormControlLabel
-              value="top-right"
-              label="top-right"
-              control={<Radio />}
-            />
-          </RadioGroup>
-          <RadioGroup
-            row
-            name="anchorValue"
-            value={anchorValue}
-            onChange={this.handleChangeAnchorOrigin}
-            className={classes.radioGroup}
-          >
-            <FormControlLabel
-              value="bottom-left"
-              label="bottom-left"
-              control={<Radio />}
-            />
-            <FormControlLabel
-              value="bottom-center"
-              label="bottom-center"
-              control={<Radio />}
-            />
-            <FormControlLabel
-              value="bottom-right"
-              label="bottom-right"
-              control={<Radio />}
-            />
-          </RadioGroup>
-          <Divider className={classes.divider} />
-          <Grid container>
-            <Button
-              size="medium"
-              color="primary"
-              variant="contained"
-              onClick={this.handleOpen}
-              className={classes.button}
+      <Layout>
+        <Grid container direction="column" alignItems="center">
+          <Paper className={classes.root}>
+            <Typography variant="h3">Playground</Typography>
+            <Divider className={classes.divider} />
+            <Typography variant="h5">Variant</Typography>
+            <RadioGroup
+              row
+              name="variant"
+              value={variant}
+              onChange={this.handleChangeVariant}
+              className={classes.radioGroup}
             >
-              OPEN
-            </Button>
-            <Button
-              size="medium"
-              color="danger"
-              variant="contained"
-              onClick={this.handleClose}
-              className={classes.button}
+              <FormControlLabel
+                value="default"
+                label="default"
+                control={<Radio />}
+              />
+              <FormControlLabel value="info" label="info" control={<Radio />} />
+              <FormControlLabel
+                value="success"
+                label="success"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                value="error"
+                label="error"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                value="warning"
+                label="warning"
+                control={<Radio />}
+              />
+            </RadioGroup>
+            <Divider className={classes.divider} />
+            <Typography variant="h5">AnchorOrigin</Typography>
+            <RadioGroup
+              row
+              name="anchorValue"
+              value={anchorValue}
+              onChange={this.handleChangeAnchorOrigin}
+              className={classes.radioGroup}
             >
-              CLOSE
-            </Button>
-          </Grid>
-        </Paper>
-        <Notification
-          open={open}
-          variant={variant as NotificationVariantKey}
-          anchorOrigin={anchorOrigin}
-          message={message}
-          onClose={this.handleClose}
-        />
-      </Grid>
+              <FormControlLabel
+                value="top-left"
+                label="top-left"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                value="top-center"
+                label="top-center"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                value="top-right"
+                label="top-right"
+                control={<Radio />}
+              />
+            </RadioGroup>
+            <RadioGroup
+              row
+              name="anchorValue"
+              value={anchorValue}
+              onChange={this.handleChangeAnchorOrigin}
+              className={classes.radioGroup}
+            >
+              <FormControlLabel
+                value="bottom-left"
+                label="bottom-left"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                value="bottom-center"
+                label="bottom-center"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                value="bottom-right"
+                label="bottom-right"
+                control={<Radio />}
+              />
+            </RadioGroup>
+            <Divider className={classes.divider} />
+            <Grid container>
+              <Button
+                size="medium"
+                color="primary"
+                variant="contained"
+                onClick={this.handleOpen}
+                className={classes.button}
+              >
+                OPEN
+              </Button>
+              <Button
+                size="medium"
+                color="danger"
+                variant="contained"
+                onClick={this.handleClose}
+                className={classes.button}
+              >
+                CLOSE
+              </Button>
+            </Grid>
+          </Paper>
+          <Notification
+            open={open}
+            variant={variant as NotificationVariantKey}
+            anchorOrigin={anchorOrigin}
+            message={message}
+            onClose={this.handleClose}
+          />
+        </Grid>
+      </Layout>
     );
   };
 }

@@ -8,13 +8,9 @@ import {
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import CardUser from 'components/cards/user';
-import withAuthentication, {
-  AuthenticationProps,
-} from 'components/hoc/with-authentication';
-import { Layout } from 'components/Layout';
 import { listUser } from 'libs/api-client';
 import MUIDataTable, { MUIDataTableColumn } from 'mui-datatables';
-import { NextPage } from 'next';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { UserWithoutPassword as User } from 'types';
 
@@ -51,7 +47,7 @@ const columns: MUIDataTableColumn[] = [
     },
   },
 ];
-const IndexPage: NextPage<AuthenticationProps> = () => {
+const UserPage: React.FC<{ title?: string }> = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>();
@@ -106,39 +102,44 @@ const IndexPage: NextPage<AuthenticationProps> = () => {
   }, []);
 
   return (
-    <Layout>
-      <Grid
-        container
-        spacing={3}
-        direction="column"
-        style={{ paddingTop: '2em' }}
-      >
-        <Grid item lg style={{ display: Boolean(error) ? 'block' : 'none' }}>
-          <Collapse in={Boolean(error)}>
-            <Alert severity="error">{error}</Alert>
-          </Collapse>
-        </Grid>
-        <Grid item lg>
-          <MUIDataTable
-            title={
-              <Typography variant="h6">
-                User List
-                {isLoading && (
-                  <CircularProgress
-                    size={24}
-                    style={{ marginLeft: 15, position: 'relative', top: 4 }}
-                  />
-                )}
-              </Typography>
-            }
-            columns={columns}
-            options={options as any}
-            data={users}
-          />
-        </Grid>
+    <Grid
+      container
+      spacing={3}
+      direction="column"
+      style={{ paddingTop: '2em' }}
+    >
+      <Grid item lg style={{ display: Boolean(error) ? 'block' : 'none' }}>
+        <Collapse in={Boolean(error)}>
+          <Alert severity="error">{error}</Alert>
+        </Collapse>
       </Grid>
-    </Layout>
+      <Grid item lg>
+        <MUIDataTable
+          title={
+            <Typography variant="h6">
+              User List
+              {isLoading && (
+                <CircularProgress
+                  size={24}
+                  style={{ marginLeft: 15, position: 'relative', top: 4 }}
+                />
+              )}
+            </Typography>
+          }
+          columns={columns}
+          options={options as any}
+          data={users}
+        />
+      </Grid>
+    </Grid>
   );
 };
 
-export default withAuthentication(IndexPage);
+UserPage.propTypes = {
+  title: PropTypes.string,
+};
+UserPage.defaultProps = {
+  title: 'User Data Page',
+};
+
+export default UserPage;

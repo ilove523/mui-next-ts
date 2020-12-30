@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
+      jssStyles.parentNode?.removeChild(jssStyles);
     }
   }, []);
 
@@ -26,9 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <AuthProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <Component {...pageProps} />
           </ThemeProvider>
         </AuthProvider>
       </UserProvider>

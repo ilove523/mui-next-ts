@@ -25,7 +25,7 @@ class SidebarMenu extends React.Component<PSidebarMenu, SSidebarMenu> {
   constructor(props: PSidebarMenu) {
     super(props);
     this.state = {
-      openCollapse: false,
+      openCollapse: true,
       openPopover: false,
     };
     this.__ref = React.createRef();

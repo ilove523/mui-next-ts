@@ -10,8 +10,8 @@ import {
 } from 'libs/middleware';
 import { registerSchema } from 'libs/validation';
 import { setCookie } from 'nookies';
-import { ConflictError, NextHttpHandler, User } from 'types';
-
+import { ConflictError, NextHttpHandler } from 'types';
+import { User } from 'types/user';
 /**
  * Register a new a user
  */

@@ -63,15 +63,15 @@ class DynamicSelect extends React.Component<PDynamicSelect, SDynamicSelect> {
     if (!optionValues.includes(value)) {
       const newValue = optionValues[0] as string | number;
 
-      onChange!(
-        {
-          target: {
-            name,
-            value: newValue,
-          },
-        },
-        null,
-      );
+      // onChange!(
+      //   {
+      //     target: {
+      //       name,
+      //       value: newValue,
+      //     },
+      //   },
+      //   null,
+      // );
     }
 
     // sorting, keep options' order consistent.

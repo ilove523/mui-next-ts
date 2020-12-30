@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import RegisterForm from 'components/forms/register';
+import RegisterForm from 'components/user/register';
 import { useAuth } from 'hooks/auth-context';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';

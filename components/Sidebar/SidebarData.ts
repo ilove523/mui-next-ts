@@ -1,5 +1,5 @@
 import { Dashboard, Home, SentimentVeryDissatisfied } from '@material-ui/icons';
-import { Page, PageGroup } from 'components/Sidebar';
+import { Page, PageGroup } from 'components/Sidebar/types';
 
 export const pageGroups: Array<PageGroup> = [
   {
@@ -10,9 +10,10 @@ export const pageGroups: Array<PageGroup> = [
 
 export const pages: Array<Page> = [
   { name: 'index', to: '/', icon: Home },
+  { name: 'Todo', to: '/todos', icon: Home },
   {
     name: 'Error Page',
-    to: '/some-error-page',
+    to: '/error',
     icon: SentimentVeryDissatisfied,
   },
   { name: 'Notifications', to: '/notifications', groupName: 'Components' },

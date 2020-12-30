@@ -1,7 +1,8 @@
-import { pageGroups, pages } from '_helpers/fakeData';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 import { Sidebar } from 'components/Sidebar';
+import { pageGroups, pages } from 'components/Sidebar/SidebarData';
+import TopBar from 'components/topbar/topbar';
 import { withRouter } from 'next/router';
 import React from 'react';
 
@@ -83,7 +84,7 @@ class Layout extends React.Component<PLayout, SLayout> {
               onToggleMini={this.handleToggleMini}
               onToggleRwd={this.handleToggleRwd}
             >
-              You can put your own actions here.
+              <TopBar />
             </Header>
           </Container>
           <Container flex>

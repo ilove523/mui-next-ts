@@ -11,7 +11,7 @@ class Footer extends React.Component<PFooter> {
     return (
       <div className={classes.root}>
         <Copyright className={classes.copyrightIcon} />
-        <p className={classes.copyrightContent}>2019 All rights reserved.</p>
+        <p className={classes.copyrightContent}>2020 All rights reserved.</p>
       </div>
     );
   };
