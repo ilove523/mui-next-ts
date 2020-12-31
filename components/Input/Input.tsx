@@ -6,7 +6,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import Clear from '@material-ui/icons/Clear';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React from 'react';
 
 import { ThemeProvider } from '../ThemeProvider';
@@ -71,7 +71,7 @@ class Input extends React.Component<PInput> {
             endAdornment={
               clearable && Boolean(value) ? (
                 <Clear
-                  className={classNames({
+                  className={clsx({
                     [classes.icon]: true,
                     [classes.clear]: true,
                   })}

@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core';
 import { Close, Search } from '@material-ui/icons';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { Input } from 'components/Input';
 import React from 'react';
 
@@ -24,7 +24,7 @@ class SelectSearch extends React.Component<PSelectSearch> {
         onChange={onSearchChange}
         startAdornment={
           <Search
-            className={classNames({
+            className={clsx({
               [classes.icon]: true,
               [classes.iconSearch]: true,
             })}
@@ -33,7 +33,7 @@ class SelectSearch extends React.Component<PSelectSearch> {
         endAdornment={
           <Close
             onClick={onSearchClear}
-            className={classNames({
+            className={clsx({
               [classes.icon]: true,
               [classes.iconClear]: true,
             })}

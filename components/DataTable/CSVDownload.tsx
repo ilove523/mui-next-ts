@@ -1,6 +1,6 @@
 import { Tooltip, withStyles } from '@material-ui/core';
 import { CloudDownload } from '@material-ui/icons';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React from 'react';
 import { CSVLink } from 'react-csv';
 
@@ -23,7 +23,7 @@ class CSVDownload extends React.Component<PCSVDownload> {
           asyncOnClick={CSVLinkProps.asyncOnClick}
         >
           <CloudDownload
-            className={classNames(
+            className={clsx(
               classes.icon,
               classes.iconClickable,
               classes.iconHighlight,

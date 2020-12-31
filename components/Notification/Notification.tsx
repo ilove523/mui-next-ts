@@ -6,7 +6,7 @@ import {
   InfoOutlined,
   Warning,
 } from '@material-ui/icons';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React from 'react';
 
 import { notificationStyles } from './styles';
@@ -42,21 +42,21 @@ class Notification extends React.Component<PNotification> {
         <SnackbarContent
           message={
             <Grid container alignItems="center">
-              <Icon className={classNames(classes.icon, classes[variant])} />
+              <Icon className={clsx(classes.icon, classes[variant])} />
               {message}
             </Grid>
           }
           action={
             <Clear
               onClick={onClose}
-              className={classNames(
+              className={clsx(
                 classes.icon,
                 classes.iconClear,
                 classes[variant],
               )}
             />
           }
-          className={classNames(classes.content, classes[variant])}
+          className={clsx(classes.content, classes[variant])}
         />
       </Snackbar>
     );

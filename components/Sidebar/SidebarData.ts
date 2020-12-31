@@ -10,6 +10,7 @@ export const pageGroups: Array<PageGroup> = [
 
 export const pages: Array<Page> = [
   { name: 'index', to: '/', icon: Home },
+  { name: 'Dashboard', to: '/dashboard', icon: Dashboard },
   { name: 'Todo', to: '/todos', icon: Home },
   {
     name: 'Error Page',

@@ -1,5 +1,5 @@
 import { withStyles } from '@material-ui/core';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React from 'react';
 
 import { layoutStyles } from './styles';
@@ -14,7 +14,7 @@ class Container extends React.Component<PContainer> {
     const { flex, children, classes, ...divProps } = this.props;
     return (
       <div
-        className={classNames({
+        className={clsx({
           [classes.container]: true,
           [classes.flex]: flex,
         })}

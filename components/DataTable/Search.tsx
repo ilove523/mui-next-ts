@@ -1,6 +1,6 @@
 import { Tooltip, withStyles } from '@material-ui/core';
 import { Clear, Search as SearchIcon } from '@material-ui/icons';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { Input } from 'components/Input';
 import React from 'react';
 
@@ -52,7 +52,7 @@ class Search extends React.Component<PSearch, SSearch> {
           disableUnderline={disableUnderline}
           startAdornment={
             <SearchIcon
-              className={classNames(classes.icon, {
+              className={clsx(classes.icon, {
                 [classes.iconSearchInput]: open,
                 [classes.iconClickable]: !open,
                 [classes.iconHighlight]: !open,
@@ -63,7 +63,7 @@ class Search extends React.Component<PSearch, SSearch> {
           endAdornment={
             open && (
               <Clear
-                className={classNames(
+                className={clsx(
                   classes.icon,
                   classes.iconClickable,
                   classes.iconHighlight,
@@ -73,9 +73,9 @@ class Search extends React.Component<PSearch, SSearch> {
             )
           }
           FormControlProps={{
-            className: classNames(
+            className: clsx(
               classes.searchContainer,
-              classNames({
+              clsx({
                 [classes.searchContainerOpen]: open,
                 [classes.searchContainerClose]: !open,
               }),

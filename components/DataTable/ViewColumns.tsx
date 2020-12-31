@@ -1,6 +1,6 @@
 import { FormGroup, Popover, Tooltip, withStyles } from '@material-ui/core';
 import { ViewColumn } from '@material-ui/icons';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React from 'react';
 
 import { Checkbox } from '../Checkbox';
@@ -31,7 +31,7 @@ class ViewColumns extends React.Component<PViewColumns, SViewColumns> {
         <Tooltip title="選擇欄位" classes={{ popper: classes.tooltip }}>
           <ViewColumn
             ref={this.__ref}
-            className={classNames(
+            className={clsx(
               classes.icon,
               classes.iconClickable,
               classes.iconHighlight,

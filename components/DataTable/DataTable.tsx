@@ -10,7 +10,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { TablePaginationProps } from '@material-ui/core/TablePagination';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { PInput } from 'components/Input';
 import React from 'react';
 import { LabelKeyObject } from 'react-csv/components/CommonPropTypes';
@@ -369,7 +369,7 @@ class DataTable extends React.Component<PDataTable, SDataTable> {
                 return (
                   <TableRow
                     key={rowIX}
-                    className={classNames(classes.body, {
+                    className={clsx(classes.body, {
                       [classes.hover]: hover,
                       [classes.pickable]: pick,
                       [classes.picked]: this.isPick(d[pickBy!]),

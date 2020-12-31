@@ -1,6 +1,6 @@
 import { Tooltip, withStyles } from '@material-ui/core';
 import { Print } from '@material-ui/icons';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React from 'react';
 import ReactToPrint from 'react-to-print';
 
@@ -15,7 +15,7 @@ class PrintTable extends React.Component<PPrintTable> {
         trigger={() => (
           <Tooltip title="列印表格" classes={{ popper: classes.tooltip }}>
             <Print
-              className={classNames(
+              className={clsx(
                 classes.icon,
                 classes.iconHighlight,
                 classes.iconClickable,

@@ -8,7 +8,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React from 'react';
 
 import SidebarLink from './SidebarLink';
@@ -63,7 +63,7 @@ class SidebarMenu extends React.Component<PSidebarMenu, SSidebarMenu> {
             button
             divider
             buttonRef={this.__ref}
-            className={classNames({
+            className={clsx({
               [classes.menu]: true,
               [classes.menuOpen]: openCollapse,
               [classes.menuClose]: !openCollapse,
@@ -91,7 +91,7 @@ class SidebarMenu extends React.Component<PSidebarMenu, SSidebarMenu> {
             button
             divider
             onClick={this.handleToggleCollapse}
-            className={classNames({
+            className={clsx({
               [classes.menu]: true,
               [classes.menuOpen]: openCollapse,
               [classes.menuClose]: !openCollapse,

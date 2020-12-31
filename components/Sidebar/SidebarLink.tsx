@@ -1,6 +1,6 @@
 import { Grid, ListItem, withStyles } from '@material-ui/core';
 import { People } from '@material-ui/icons';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
 import React from 'react';
@@ -17,7 +17,7 @@ class SidebarLink extends React.Component<PSidebarLink> {
         <Link href={page.to}>
           <ListItem
             button
-            className={classNames({
+            className={clsx({
               [classes.menuItem]: true,
               [classes.menuItemHighlight]: page.to === router.pathname,
             })}
@@ -27,14 +27,12 @@ class SidebarLink extends React.Component<PSidebarLink> {
             ) : (
               // placeholder, only use in mini mode
               !mini && (
-                <People
-                  className={classNames(classes.icon, classes.visibleHidden)}
-                />
+                <People className={clsx(classes.icon, classes.visibleHidden)} />
               )
             )}
             <div className={classes.flex}>
               <p
-                className={classNames({
+                className={clsx({
                   [classes.menuItemText]: true,
                   [classes.menuItemTextHighlight]: page.to === router.pathname,
                 })}
