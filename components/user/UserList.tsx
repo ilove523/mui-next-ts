@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import CardUser from 'components/cards/user';
-import { listUser } from 'libs/api-client';
+import { listData } from 'libs/api-client';
 import MUIDataTable, { MUIDataTableColumn } from 'mui-datatables';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -47,14 +47,14 @@ const columns: MUIDataTableColumn[] = [
     },
   },
 ];
-const UserPage: React.FC<{ title?: string }> = () => {
+const UserList: React.FC<{ title?: string }> = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>();
   const options = {
     responsive: 'standard',
     expandableRows: true,
-    expandableRowsOnClick: true,
+    expandableRowsOnClick: false,
     renderExpandableRow(rowData, rowMeta) {
       const colSpan = rowData.length + 1;
 
@@ -82,7 +82,8 @@ const UserPage: React.FC<{ title?: string }> = () => {
       try {
         setError(null);
         setIsLoading(true);
-        const data = await listUser({
+        const data = await listData<User>({
+          dataSrc: '/api/users',
           limit: 100,
           signal: abortController.signal,
         });
@@ -135,11 +136,11 @@ const UserPage: React.FC<{ title?: string }> = () => {
   );
 };
 
-UserPage.propTypes = {
+UserList.propTypes = {
   title: PropTypes.string,
 };
-UserPage.defaultProps = {
+UserList.defaultProps = {
   title: 'User Data Page',
 };
 
-export default UserPage;
+export default UserList;
